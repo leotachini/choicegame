@@ -3,6 +3,7 @@ import Accordion from '@mui/material/Accordion';
 import AccordionSummary from '@mui/material/AccordionSummary';
 import AccordionDetails from '@mui/material/AccordionDetails';
 import Typography from '@mui/material/Typography';
+//import { Box } from '@mui/material';
 
 interface AccordionProps {
     title: string;
@@ -12,19 +13,21 @@ interface AccordionProps {
   
   const AccordionSuspects = (props: AccordionProps) => {
 
-    const { title, text,grau } = props;
+    const { title, text, grau } = props;
 
   return (
-    <div>
+   
       <Accordion 
       sx={{ 
         backgroundColor: "#d9dddc",
         minWidth: 80,
-        width: 300,
+        width: 600,
         textAlign: "left",
         alignItems: "center",
         position: "relative",
-        marginBottom: 1,
+        wordWrap: 'break-word',
+        whiteSpace: 'pre-line',
+        borderRadius: "0px",
         }}
         >
         <AccordionSummary aria-controls="panel1d-content" id="panel1d-header">
@@ -33,12 +36,10 @@ interface AccordionProps {
         <AccordionDetails>
         <Typography>{grau}</Typography>
           <Typography>
-            
             {text}
           </Typography>
         </AccordionDetails>
       </Accordion>
-    </div>
   );
   }
 

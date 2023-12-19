@@ -21,7 +21,7 @@ interface ModalProps {
     title: string;
     text: string;
     mdiIcon: string;
-    mission: string | null | string[];
+    mission?: string[];
    // answers: string | null | string[];
 }
 
@@ -54,7 +54,7 @@ function BasicModal(props: ModalProps) {
           </Typography>
           <ul>
           <Typography id="modal-modal-description" sx={{ mt: 2 }}>
-            {mission}
+            {mission?.map(mission => <li key={mission}>{mission}</li>)}
           </Typography>
           </ul>
           {/*

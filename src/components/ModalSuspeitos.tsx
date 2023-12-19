@@ -3,7 +3,6 @@ import Box from '@mui/material/Box';
 import Typography from '@mui/material/Typography';
 import Modal from '@mui/material/Modal';
 import { getMdiIcon } from '../icons/getMdiIcon';
-import CardsSuspeitos from './CardsSuspeitos';
 import AccordionSuspects from './MuiComponents/Accordion';
 
 const style = {
@@ -48,8 +47,10 @@ function ModalSuspeitos(props: ModalProps) {
       aria-describedby="modal-modal-description"
     >
       <Box sx={style}>
-        <CardsSuspeitos nome='Carlos Machado' grau='???????????' mdiIcon='Account'/>
+      <Box sx={{display: "flex", flexDirection: 'column', gap: 2}}>
+        <AccordionSuspects title='Carlos Machado' text="vnofvnfoidubvnvnofvnfoidubvnvnofvnfoidubvnvnofvnfoidubvnvnofvnfoidubvn" grau='???????' />
         <AccordionSuspects title='Carlos Machado' text="vnofvnfoidubvn" grau='???????' />
+        </Box>
       </Box>
     </Modal>
   </div>
