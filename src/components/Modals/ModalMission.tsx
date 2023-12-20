@@ -2,7 +2,7 @@ import * as React from 'react';
 import Box from '@mui/material/Box';
 import Typography from '@mui/material/Typography';
 import Modal from '@mui/material/Modal';
-import { getMdiIcon } from '../icons/getMdiIcon';
+import { getMdiIcon } from '../../icons/getMdiIcon';
 
 const style = {
   position: 'absolute',
@@ -25,7 +25,7 @@ interface ModalProps {
    // answers: string | null | string[];
 }
 
-function BasicModal(props: ModalProps) {
+function MissionModal(props: ModalProps) {
   const [open, setOpen] = React.useState(false);
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
@@ -68,4 +68,4 @@ function BasicModal(props: ModalProps) {
   );
 }
 
-export default BasicModal;
+export default MissionModal;

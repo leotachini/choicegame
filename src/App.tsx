@@ -1,7 +1,8 @@
 import './App.css';
-import BasicModal from './components/Modal';
-import ModalStory from './components/ModalStory';
-import ModalSuspeitos from './components/ModalSuspeitos';
+import ModalMission from './components/Modals/ModalMission';
+import ModalRespostas from './components/Modals/ModalRespostas';
+import ModalStory from './components/Modals/ModalStory';
+import ModalSuspeitos from './components/Modals/ModalSuspeitos';
 
 
 function App() {
@@ -19,14 +20,14 @@ function App() {
         
         <ModalStory mdiIcon='BookOpenPageVariant' title='História' text={historia} />
 
-        <BasicModal mdiIcon='FormatListBulleted' title='Missões' text='Nesse jogo você tem o objetivo de responder as seguintes perguntas, caso todas sejam respondidas corretamente 
+        <ModalMission mdiIcon='FormatListBulleted' title='Missões' text='Nesse jogo você tem o objetivo de responder as seguintes perguntas, caso todas sejam respondidas corretamente 
         você receberá a conclusão da história' mission={perguntas}/>
 
         <ModalSuspeitos mdiIcon='CardAccountDetails' title='Personagens' />
 
-        <BasicModal mdiIcon='Magnify' title='Evidências' text='O jogo possui 5 evidências, sendo que cada uma delas possui uma habilidade especial.'/>
+        <ModalMission mdiIcon='Magnify' title='Evidências' text='O jogo possui 5 evidências, sendo que cada uma delas possui uma habilidade especial.'/>
 
-        <BasicModal mdiIcon='Help' title='Respostas' text='Insira aqui as respostas das missões.'/>
+        <ModalRespostas mdiIcon='Help' title='Respostas'/>
       </div>
     </>
   );

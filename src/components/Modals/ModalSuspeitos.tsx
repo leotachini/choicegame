@@ -2,8 +2,8 @@ import * as React from 'react';
 import Box from '@mui/material/Box';
 import Typography from '@mui/material/Typography';
 import Modal from '@mui/material/Modal';
-import { getMdiIcon } from '../icons/getMdiIcon';
-import AccordionSuspects from './MuiComponents/Accordion';
+import { getMdiIcon } from '../../icons/getMdiIcon';
+import AccordionSuspects from '../MuiComponents/Accordion';
 
 const style = {
   position: 'absolute',
@@ -48,8 +48,16 @@ function ModalSuspeitos(props: ModalProps) {
     >
       <Box sx={style}>
       <Box sx={{display: "flex", flexDirection: 'column', gap: 2}}>
-        <AccordionSuspects title='Carlos Machado' text="vnofvnfoidubvnvnofvnfoidubvnvnofvnfoidubvnvnofvnfoidubvnvnofvnfoidubvn" grau='???????' />
-        <AccordionSuspects title='Carlos Machado' text="vnofvnfoidubvn" grau='???????' />
+        <AccordionSuspects title='Ana Silva' text="dd" grau='Dona da Casa' />
+        <AccordionSuspects title='Rodrigo Santos' text="vnofvnfoidubvn" grau='Anfitrião' />
+        <AccordionSuspects title='Juliana Oliveira' text="vnofvnfoidubvn" grau='Advogada' />
+        <AccordionSuspects title='Lucas Pereira' text="vnofvnfoidubvn" grau='Engenheiro' />
+        <AccordionSuspects title='Izabela Souza' text="vnofvnfoidubvn" grau='Médica' />
+        <AccordionSuspects title='Rafael Martins' text="vnofvnfoidubvn" grau='Funcionário Público' />
+        <AccordionSuspects title='Camila Lima' text="vnofvnfoidubvn" grau='Empresária' />
+        <AccordionSuspects title='Guilherme Almeida' text="vnofvnfoidubvn" grau='Administrador' />
+        <AccordionSuspects title='Thiago Rocha' text="vnofvnfoidubvn" grau='Técnico de TI' />
+        <AccordionSuspects title='Amanda Santos' text="vnofvnfoidubvn" grau='Dentista e Esposa de Rodrigo' />
         </Box>
       </Box>
     </Modal>
