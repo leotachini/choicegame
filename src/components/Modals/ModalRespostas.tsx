@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import Box from '@mui/material/Box';
 import Typography from '@mui/material/Typography';
 import Modal from '@mui/material/Modal';
@@ -6,19 +6,21 @@ import { getMdiIcon } from '../../icons/getMdiIcon';
 import Autocomplete from '@mui/material/Autocomplete'; // Corrigido
 import Button from '@mui/material/Button';
 import { TextField } from '@mui/material';
+import { armaCrime, motivoCrime, locaisCrime, listaSuspeitos} from '../../data';
 
 const style = {
   position: 'absolute',
   top: '50%',
   left: '50%',
   transform: 'translate(-50%, -50%)',
-  width: 600,
+  width: {xs:300,sm: 400, me: 600, lg: 800},
   height: 600,
   bgcolor: 'background.paper',
-  border: '2px solid #000',
-  boxShadow: 24,
-  p: 4,
+  border: '3px solid #000',
+  boxShadow: 12,
+  p:6,
   overflowY: 'auto',
+  display: 'grid',
 };
 
 interface ModalProps {
@@ -27,36 +29,34 @@ interface ModalProps {
 }
 
 const ModalRespostas = (props: ModalProps) => {
-  const [open, setOpen] = React.useState(false);
+  const [open, setOpen] = useState(false);
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
 
   const { title, mdiIcon } = props;
   const Icon = getMdiIcon(mdiIcon);
 
-const armaCrime = ["Faca", "Revolver", "Veneno", "Defenestração", "Cinto", "Corda", "Pá", "Espada", "Bastão", "Machado", "Foice", "Caco de Vidro", "Martelo", "Travesseiro", "Estátua", "Afogamento"];
-const motivoCrime = ["Ciúmes","Herança", "Amor Não Correspondido", "Dívida Financeira", "Conspiração", "Rivalidade Profissional", "Segredo Obscuro", "Vingança", "Desespero", "Acidente", "Mistério Inexplicável", "Ambição Desmedida", "Obcessão", "Erro de Identidade", "Traição"];
-const locaisCrime = ["Sala de Estar", "Cozinha", "Salão de Festas", "Biblioteca", "Sala de Jantar", "Jardim", "Sala de Jogos", "Conservatório", "Hall de Entrada", "Escritório", "Observatório", "Sótão", "Piscina", "Varanda", "Quarto", "Praia", "Telhado"];
-const listaSuspeitos = ["Ana Silva", "Rodrigo Santos", "Juliana Oliveira", "Lucas Pereira", "Isabela Souza", "Rafael Martins", "Camila Lima", "Guilherme Almeida", "Mariana Costa", "Thiago Rocha", "Amanda Santos"];
-
-  const [vitima, setVitima] = useState("");
+  const [cena, setCena] = useState("")
   const [killer, setKiller] = useState("")
-  const [arma, setArma] = useState('')
-  const [local, setLocal] = useState('')
-  const [motivo, setMotivo] = useState('')
+  const [arma, setArma] = useState("")
+  const [local, setLocal] = useState("")
+  const [motivo, setMotivo] = useState("")
 
   const handleSubmit = (e: any) => {
     e.preventDefault();
-    if (vitima === "Ana Silva" && killer === "Guilherme Almeida" && arma === "Faca" && local === "Quarto" && motivo === "Vingança") {
+    if (cena === locaisCrime[5] && killer === listaSuspeitos[4].nome && arma === armaCrime[3] && local === locaisCrime[13] && motivo === motivoCrime[6]) {
       alert("Você desvendou o crime! Parabéns detetive, o mundo precisa de mais pessoas como você 😉")
     }
+  else if(motivo === "Mistério sem Solução" &&  local === cena){
+     alert("Tem solução sim, você só precisa confiar em si mesmo🤞🤞, mas aí vai uma dica, o local onde ocorreu o crime e onde o corpo foi encontrado são diferentes")
+  }
     else{
       alert('Você não desvendou o crime, tente novamente!')
     }
   };
 
   return (
-    <div>
+    <Box>
       <Icon sx={{ width: 100, height: 100, padding: 2 }} onClick={handleOpen}>
         {title}
       </Icon>
@@ -73,10 +73,10 @@ const listaSuspeitos = ["Ana Silva", "Rodrigo Santos", "Juliana Oliveira", "Luca
           <form onSubmit={handleSubmit}>
             <Autocomplete
             sx={{mt: 2}}
-              options={listaSuspeitos}
-              onChange={(event, value) => setVitima(value ?? '')}
+              options={locaisCrime}
+              onChange={(event, value) => setCena(value ?? '')}
               renderInput={(params) => (
-                <TextField {...params} label="Quem é a vítima?" variant="outlined" />
+                <TextField {...params} label="Em que lugar estava o corpo?" variant="outlined" />
               )}
             />
             <Autocomplete
@@ -92,7 +92,7 @@ const listaSuspeitos = ["Ana Silva", "Rodrigo Santos", "Juliana Oliveira", "Luca
               options={locaisCrime}
               onChange={(event, value) => setLocal(value ?? '')}
               renderInput={(params) => (
-                <TextField {...params} label="Em que lugar ocorreu o crime?" variant="outlined" />
+                <TextField {...params} label="Em que cômodo ocorreu o crime?" variant="outlined" />
               )}
             />
             <Autocomplete
@@ -105,7 +105,7 @@ const listaSuspeitos = ["Ana Silva", "Rodrigo Santos", "Juliana Oliveira", "Luca
             />
             <Autocomplete
             sx={{mt: 2}}
-              options={listaSuspeitos}
+              options={listaSuspeitos.map(suspeito => suspeito.nome)}
               onChange={(event, value) => setKiller(value ?? '')}
               renderInput={(params) => (
                 <TextField {...params} label="Quem é o assassino?" variant="outlined" />
@@ -117,7 +117,7 @@ const listaSuspeitos = ["Ana Silva", "Rodrigo Santos", "Juliana Oliveira", "Luca
           </form>
         </Box>
       </Modal>
-    </div>
+    </Box>
   );
 }
 

@@ -9,12 +9,13 @@ const style = {
   top: '50%',
   left: '50%',
   transform: 'translate(-50%, -50%)',
-  width: 600,
+  width: {sm: 500, me: 600, lg: 800},
   height: 600,
   bgcolor: 'background.paper',
-  border: '2px solid #000',
-  boxShadow: 24,
-  p: 4,
+  border: '3px solid #000',
+  boxShadow: 12,
+  p: 6,
+  overflowY: 'auto',
 };
 
 interface ModalProps {
@@ -22,7 +23,6 @@ interface ModalProps {
     text: string;
     mdiIcon: string;
     mission?: string[];
-   // answers: string | null | string[];
 }
 
 function MissionModal(props: ModalProps) {
@@ -34,7 +34,7 @@ function MissionModal(props: ModalProps) {
     const Icon = getMdiIcon(mdiIcon);
 
   return (
-    <div>
+    <Box>
       <Icon sx={{width: 100, height: 100, padding: 2}} onClick={handleOpen}>{title}</Icon>
       <Typography onClick={handleOpen} variant="h6" component="h2">
             {title}
@@ -49,22 +49,17 @@ function MissionModal(props: ModalProps) {
           <Typography id="modal-modal-title" variant="h6" component="h2">
             {title}
           </Typography>
-          <Typography id="modal-modal-description" variant="h6" component="h3" sx={{ mt: 2, wordWrap: "break-word", whiteSpace: "pre-line" }}>
+          <Typography id="modal-modal-description" variant="h6" component="h3" sx={{ mt: 2, wordWrap: "break-word", whiteSpace: "pre-line", fontSize: "14px"}}>
             {text}
           </Typography>
           <ul>
-          <Typography id="modal-modal-description" sx={{ mt: 2 }}>
+          <Typography id="modal-modal-description" sx={{ mt: 2, fontSize: "13px" }}>
             {mission?.map(mission => <li key={mission}>{mission}</li>)}
           </Typography>
           </ul>
-          {/*
-          <Typography id="modal-modal-description" sx={{ mt: 2 }}>
-            {answers}
-          </Typography>
-  */}
         </Box>
       </Modal>
-    </div>
+    </Box>
   );
 }
 

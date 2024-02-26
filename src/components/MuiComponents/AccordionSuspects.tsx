@@ -3,41 +3,44 @@ import Accordion from '@mui/material/Accordion';
 import AccordionSummary from '@mui/material/AccordionSummary';
 import AccordionDetails from '@mui/material/AccordionDetails';
 import Typography from '@mui/material/Typography';
+import { ReactNode } from 'react';
 
 
 interface AccordionProps {
-    title: string;
+    nome: string;
+    relacao: string;
     text: string;
-    grau: string;
+    children?: ReactNode;
   }
   
   const AccordionSuspects = (props: AccordionProps) => {
 
-    const { title, text, grau } = props;
+    const { nome, relacao, text, children } = props;
 
   return (
    
       <Accordion 
       sx={{ 
         backgroundColor: "#d9dddc",
-        minWidth: 80,
-        width: 600,
+        minWidth: 200,
+        width: {sm: 400, me: 550, lg: 800},
         textAlign: "left",
         alignItems: "center",
         position: "relative",
         wordWrap: 'break-word',
         whiteSpace: 'pre-line',
-        borderRadius: "0px",
         }}
         >
         <AccordionSummary aria-controls="panel1d-content" id="panel1d-header">
-          <Typography sx={{fontWeight: "bold"}}>{title}</Typography>
+          <Typography sx={{fontWeight: "bold"}}>{nome}</Typography>
         </AccordionSummary>
         <AccordionDetails>
-        <Typography>{grau}</Typography>
+        <Typography>{relacao}</Typography>
           <Typography>
+            Depoimento:
             {text}
           </Typography>
+          {children}
         </AccordionDetails>
       </Accordion>
   );

@@ -3,24 +3,26 @@ import Box from '@mui/material/Box';
 import Typography from '@mui/material/Typography';
 import Modal from '@mui/material/Modal';
 import { getMdiIcon } from '../../icons/getMdiIcon';
-import AccordionSuspects from '../MuiComponents/Accordion';
+import AccordionSuspects from '../MuiComponents/AccordionSuspects';
+import { listaSuspeitos } from '../../data';
 
 const style = {
   position: 'absolute',
   top: '50%',
   left: '50%',
   transform: 'translate(-50%, -50%)',
-  width: 600,
+  width: {sm: 400, me: 600, lg: 800},
   height: 600,
   bgcolor: 'background.paper',
   border: '2px solid #000',
   boxShadow: 24,
-  p: 4,
-  overflowY: 'auto'
+  p: 3,
+  overflowY: 'auto',
+  overflowX: 'hidden',
 };
 
 interface ModalProps {
-    title: string;
+    title: string | string[];
     mdiIcon: string;
 }
 
@@ -33,7 +35,7 @@ function ModalSuspeitos(props: ModalProps) {
     const Icon = getMdiIcon(mdiIcon);
 
   return (
-    <div>
+    <Box>
     <Icon sx={{ width: 100, height: 100, padding: 2 }} onClick={handleOpen}>
       {title}
     </Icon>
@@ -47,21 +49,18 @@ function ModalSuspeitos(props: ModalProps) {
       aria-describedby="modal-modal-description"
     >
       <Box sx={style}>
-      <Box sx={{display: "flex", flexDirection: 'column', gap: 2}}>
-        <AccordionSuspects title='Ana Silva' text="dd" grau='Dona da Casa' />
-        <AccordionSuspects title='Rodrigo Santos' text="vnofvnfoidubvn" grau='Anfitrião' />
-        <AccordionSuspects title='Juliana Oliveira' text="vnofvnfoidubvn" grau='Advogada' />
-        <AccordionSuspects title='Lucas Pereira' text="vnofvnfoidubvn" grau='Engenheiro' />
-        <AccordionSuspects title='Izabela Souza' text="vnofvnfoidubvn" grau='Médica' />
-        <AccordionSuspects title='Rafael Martins' text="vnofvnfoidubvn" grau='Funcionário Público' />
-        <AccordionSuspects title='Camila Lima' text="vnofvnfoidubvn" grau='Empresária' />
-        <AccordionSuspects title='Guilherme Almeida' text="vnofvnfoidubvn" grau='Administrador' />
-        <AccordionSuspects title='Thiago Rocha' text="vnofvnfoidubvn" grau='Técnico de TI' />
-        <AccordionSuspects title='Amanda Santos' text="vnofvnfoidubvn" grau='Dentista e Esposa de Rodrigo' />
+      <Box sx={{display: "flex", flexDirection: 'column', gap: 2 }}>
+        <AccordionSuspects nome={listaSuspeitos[0].nome} text='conedlvfw' relacao={listaSuspeitos[0].relacao} />
+        <AccordionSuspects nome={listaSuspeitos[1].nome} text='conedlvfw' relacao={listaSuspeitos[1].relacao} />
+        <AccordionSuspects nome={listaSuspeitos[2].nome} text='conedlvfw' relacao={listaSuspeitos[2].relacao} />
+        <AccordionSuspects nome={listaSuspeitos[3].nome} text='conedlvfw' relacao={listaSuspeitos[3].relacao} />
+        <AccordionSuspects nome={listaSuspeitos[4].nome} text='conedlvfw' relacao={listaSuspeitos[4].relacao} />
+        <AccordionSuspects nome={listaSuspeitos[5].nome} text='conedlvfw' relacao={listaSuspeitos[5].relacao} />
+        <AccordionSuspects nome={listaSuspeitos[6].nome} text='conedlvfw' relacao={listaSuspeitos[6].relacao} />
         </Box>
       </Box>
     </Modal>
-  </div>
+  </Box>
   );
 }
 

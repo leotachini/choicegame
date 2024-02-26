@@ -3,33 +3,35 @@ import Box from '@mui/material/Box';
 import Typography from '@mui/material/Typography';
 import Modal from '@mui/material/Modal';
 import { getMdiIcon } from '../../icons/getMdiIcon';
+import { evidencia } from '../../data';
+import AccordionEvidencias from '../MuiComponents/AccordionEvidencias';
 
 const style = {
   position: 'absolute',
   top: '50%',
   left: '50%',
   transform: 'translate(-50%, -50%)',
-  width: {xs: 200,sm: 400, me: 600, lg: 800},
+  width: {sm: 400, me: 600, lg: 800},
   height: 600,
   bgcolor: 'background.paper',
-  border: '3px solid #000',
-  boxShadow: 12,
-  p: 6,
+  border: '2px solid #000',
+  boxShadow: 24,
+  p: 3,
   overflowY: 'auto',
+  overflowX: 'hidden',
 };
 
 interface ModalProps {
     title: string;
-    text: string;
     mdiIcon: string;
 }
 
-function ModalStory(props: ModalProps) {
+function ModalEvidencias(props: ModalProps) {
   const [open, setOpen] = React.useState(false);
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
 
-    const { title, text, mdiIcon} = props;
+    const { title, mdiIcon} = props;
     const Icon = getMdiIcon(mdiIcon);
 
   return (
@@ -47,21 +49,15 @@ function ModalStory(props: ModalProps) {
       aria-describedby="modal-modal-description"
     >
       <Box sx={style}>
-        <Typography id="modal-modal-title" variant="h6" component="h2">
-          {title}
-        </Typography>
-        <Typography
-          id="modal-modal-description"
-          variant="h6"
-          component="h3"
-          sx={{ mt: 2, wordWrap: 'break-word', whiteSpace: 'pre-line' }}
-        >
-          {text}
-        </Typography>
+      <Box sx={{display: "flex", flexDirection: 'column', gap: 2, }}>
+      {evidencia.map((evidencia) => (
+        <AccordionEvidencias title={evidencia.nome} dados={evidencia.informacoes} />
+      ))}
+        </Box>
       </Box>
     </Modal>
   </Box>
   );
 }
 
-export default ModalStory;
+export default ModalEvidencias;

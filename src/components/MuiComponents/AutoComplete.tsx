@@ -4,19 +4,19 @@ import Autocomplete from '@mui/material/Autocomplete';
 
 interface AutocompleteProps {
     title: string;
-    options: string[];
+    options: string | string[];
     onChange: any;
 }
 
 function AutoComplete(props: AutocompleteProps) {
-const { options, title, onChange } = props;
+  const { options, title, onChange } = props;
 
   return (
     <Autocomplete
       disablePortal
       id="combo-box-demo"
-      options={options}
-      sx={{ width: 600, marginTop: 2 }}
+      options={Array.isArray(options) ? options : [options]}
+      sx={{ width: { sm: 400, me: 600, lg: 800 }, marginTop: 2 }}
       onChange={onChange}
       renderInput={(params) => <TextField {...params} label={title} />}
     />
